@@ -1,0 +1,9 @@
+node_modules/
+test-results/
+playwright-report/
+blob-report/
+state.json
+playwright/.cache/
+.env
+echo "state.json" >> .gitignore
+echo "node_modules/" >> .gitignore
