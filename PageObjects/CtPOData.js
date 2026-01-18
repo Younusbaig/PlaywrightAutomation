@@ -1,7 +1,3 @@
-
-const { expect } = require("../playwright.config").default;
-
-
 class CtPOData{
 
     constructor(page){
