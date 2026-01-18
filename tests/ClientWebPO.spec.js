@@ -13,7 +13,7 @@ const { ZaraPO } = require('../PageObjects/ZaraPO');
 
 
 
-// test.describe.configure({mode: 'parallel'}); to run test in parallel mode
+test.describe.configure({mode: 'parallel'});
 
 // test('@Webst Client App login through Page Objects', async ({ page }) => {
 //     //js file- Login js, DashboardPage
