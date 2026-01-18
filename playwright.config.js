@@ -1,5 +1,5 @@
 // @ts-check
-require('dotenv').config();
+// require('dotenv').config();
 const { devices } = require('@playwright/test');
 
 
@@ -14,7 +14,7 @@ const config = ({
   reporter: 'html',
   use: {
     browserName: 'chromium',
-    headless : true,
+    headless: process.env.CI ? true : false,
     screenshot : 'on',
     // video: 'on',
     trace : 'on',

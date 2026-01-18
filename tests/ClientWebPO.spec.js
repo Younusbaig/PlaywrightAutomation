@@ -67,6 +67,17 @@ const { ZaraPO } = require('../PageObjects/ZaraPO');
     });
 
 
+    trellodata = [];
+
+    if (process.env.TRELLO_USERS_JSON) {
+        // GitHub Secret se JSON string ko wapas array banayein
+        trellodata = JSON.parse(process.env.TRELLO_USERS_JSON);
+    } else {
+        // Local fallback
+        trellodata = require('../utils/trello_utils.json');
+    }
+
+
 for(const data of trellodata){
  test(`@Web Trello Api search for page object pattern ${data.username}`, async({page})=>
 {   
@@ -80,7 +91,7 @@ for(const data of trellodata){
     await trello.trelloBoard();
     await trello.addList(data.addListTitle);
     const addedcard = page.locator('.oTZCBVwh2Ud4al', { hasText: 'List for UI'});
-    await expect(addedcard).toBeVisible();
+    await expect(addedcard).toBeVisible({ timeout: 10000 });
     await expect(addedcard).toHaveText('List for UI');
     await page.waitForTimeout(1000);
     await trello.addCardInToday(data.cardTitle);
