@@ -1,5 +1,5 @@
 
-const { expect } = require("../playwright.config");
+const { expect } = require("../playwright.config").default;
 
 
 class CtPOData{

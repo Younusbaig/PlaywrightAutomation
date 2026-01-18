@@ -1,4 +1,5 @@
 // @ts-check
+require('dotenv').config();
 const { devices } = require('@playwright/test');
 
 

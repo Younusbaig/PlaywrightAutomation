@@ -6,12 +6,18 @@ test('@API trello login',async ({ browser }) => {
    
     const context = await browser.newContext();
     const page = await context.newPage();
+    const email = process.env.TRELLO_USER;
+    const pass = process.env.TRELLO_PASS;
+
     await page.goto('https://id.atlassian.com/login?application=trello&continue=https%3A%2F%2Ftrello.com%2Fauth%2Fatlassian%2Fcallback%3FreturnUrl%3D%252Flogin%2527%26display%3D%26aaOnboarding%3D%26updateEmail%3D%26traceId%3D%26ssoVerified%3D%26createMember%3D%26jiraInviteLink%3D');
     await page.waitForLoadState();
-    await page.locator('#username-uid1').fill("muhammadshahid21071998@gmail.com");
+    await page.locator('#username-uid1').fill(email);
     await page.locator('#login-submit').click();
-    await page.locator('#password').fill("Myounus@93");
+    await page.locator('#password').fill(pass);
     await page.locator('#login-submit').click();
+    if (!email || !pass) {
+      throw new Error("ERROR: TRELLO_USER or TRELLO_PASS is not defined in Environment Variables");
+    }
     await page.locator('[aria-label="Back to home"]').click();
     await page.waitForURL('https://trello.com/u/muhammadshahid21071998/boards');
     await context.storageState({path: 'state.json'})
