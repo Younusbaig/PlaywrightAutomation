@@ -18,7 +18,6 @@ test('@API security test to intercept the request', async ({ page }) => {
   await page.locator("[value='Login']").click();
   await page.waitForLoadState('networkidle');
   await page.locator(".card-body b").first().waitFor();
-  await page.pause();
   await page.locator("button[routerlink*='myorders']").click();
   await page.route("https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=*",
     route => route.continue({ url: 'https://rahulshettyacademy.com/api/ecom/order/get-orders-details?id=6941b79532ed8658713863ee' }));
@@ -98,7 +97,6 @@ test('@API intercept the response from danube', async ({ page }) => {
 
   await page.goto("https://danube-webshop.herokuapp.com/");
   await page.title();
-  await page.pause();
 
 
 })
@@ -110,7 +108,6 @@ test('@API test to automate charless tyrwitt website order scenario with PO', as
   await ct.goTo();
   await page.title();
   await ct.acceptCookies();
-  await page.pause();
 
   await page.route("**/optimization/recommend/user**",
     async route => {

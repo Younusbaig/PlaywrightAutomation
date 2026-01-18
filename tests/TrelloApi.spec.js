@@ -30,7 +30,6 @@ test('@API bypass login', async () => {
   const page = await webContext.newPage();
   await page.goto('https://trello.com/u/muhammadshahid21071998/boards');
     await page.title();
-    await page.pause();
     await page.getByText("My Trello board").first().click();
     await page.waitForTimeout(1000);
     await page.getByRole('button', { name: 'Add a card in Today' });

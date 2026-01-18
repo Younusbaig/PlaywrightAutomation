@@ -126,7 +126,6 @@ test('@Web Amazon PO select product', async({page})=>
     await amazon.goTo();
     await amazon.validLogin(amazondata.email, amazondata.password);
     await page.waitForTimeout(1000);
-    await page.pause();
     await amazon.acceptcookies();    
     await amazon.searchProduct();
     await amazon.selectProduct();
@@ -138,7 +137,6 @@ test('@Web test for zara product select', async({page})=>
 
     const zara = new ZaraPO(page);
     await zara.goTo();
-    await page.pause();
     await zara.cookiesbutton();
     await zara.selectproduct();
     await page.waitForTimeout(1000);
