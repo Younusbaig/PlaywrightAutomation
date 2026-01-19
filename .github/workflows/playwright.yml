@@ -8,7 +8,7 @@ on:
       test_tag:
         description: 'Kaunsa tag run karna hai? (e.g., @Web, @API, ya khali chorein saare chalane ke liye)'
         required: false
-        default: '@Web' # Push par default yehi chalega
+        default: '@API' # Push par default yehi chalega
 
 jobs:
   test:
