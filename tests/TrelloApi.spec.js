@@ -2,7 +2,7 @@
 const { test } = require('@playwright/test');
 
 let webContext;
-test('@API trello login',async ({ browser }) => {
+test('trello login',async ({ browser }) => {
    
     const context = await browser.newContext();
     const page = await context.newPage();
@@ -26,7 +26,7 @@ test('@API trello login',async ({ browser }) => {
   
 });
 
-test('@API bypass login', async () => {
+test('bypass login', async () => {
   const page = await webContext.newPage();
   await page.goto('https://trello.com/u/muhammadshahid21071998/boards');
     await page.title();

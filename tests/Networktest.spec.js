@@ -102,7 +102,7 @@ test('@API intercept the response from danube', async ({ page }) => {
 })
 
 
-test('@API test to automate charless tyrwitt website order scenario with PO', async ({ page }) => { // in this test we intercept the reponse, intead of all porduct we reutn 0 order
+test('test to automate charless tyrwitt website order scenario with PO', async ({ page }) => { // in this test we intercept the reponse, intead of all porduct we reutn 0 order
 
   const ct = new CtPOData(page);
   await ct.goTo();

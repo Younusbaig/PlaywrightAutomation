@@ -3,7 +3,7 @@ const {Login}  = require('../PageObjects/Login');
 const { CtPOData } = require('../PageObjects/CtPOData');
 const { TrelloPO } = require('../PageObjects/TrelloPO');
 const { AmazonPO } = require('../PageObjects/AmazonPO');
-// const trellodata = JSON.parse(JSON.stringify(require('../utils/TrelloUtils.json')));
+const trellodata = JSON.parse(JSON.stringify(require('../utils/TrelloUtils.json')));
 const dataset = JSON.parse(JSON.stringify(require('../utils/DataSet.json')));
 const amazondata = JSON.parse(JSON.stringify(require('../utils/AmazonLogin.json')));
 const { ZaraPO } = require('../PageObjects/ZaraPO');
@@ -47,13 +47,14 @@ test.describe.configure({mode: 'parallel'});
 //  }
 //  )
 
- test('@Web automate charless tyrwitt website order scenario with PO', async({page})=>
+ test.only('@Web automate charless tyrwitt website order scenario with PO', async({page})=>
 
     {
         
         const ct = new CtPOData(page);
         await ct.goTo();
         await page.title();
+        await page.pause();
         await ct.acceptCookies();
         await ct.mainPage();
         await ct.shirtsCategory();
@@ -67,15 +68,15 @@ test.describe.configure({mode: 'parallel'});
     });
 
 
-    let trellodata = [];
+    // let trellodata = [];
 
-    if (process.env.TRELLO_USERS_JSON) {
-        // GitHub Secret se JSON string ko wapas array banayein
-        trellodata = JSON.parse(process.env.TRELLO_USERS_JSON);
-    } else {
-        // Local fallback
-        trellodata = require('../utils/trello_utils.json');
-    }
+    // if (process.env.TRELLO_USERS_JSON) {
+    //     // GitHub Secret se JSON string ko wapas array banayein
+    //     trellodata = JSON.parse(process.env.TRELLO_USERS_JSON);
+    // } else {
+    //     // Local fallback
+    //     trellodata = require('../utils/trello_utils.json');
+    // }
 
 
 for(const data of trellodata){
