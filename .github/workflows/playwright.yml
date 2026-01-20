@@ -39,3 +39,11 @@ jobs:
       with:
         name: playwright-report
         path: playwright-report/
+
+
+    - name: Deploy to GitHub Pages 🚀
+      uses: peaceiris/actions-gh-pages@v3
+      if: always() # Taaki test fail ho tab bhi report dikhayi de
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./playwright-report # Playwright ki default report folder
