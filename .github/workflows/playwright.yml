@@ -29,7 +29,7 @@ jobs:
       # Yahan logic hai: agar tag diya toh grep karega, warna saare chalayega
       run: |
         TAG="${{ github.event.inputs.test_tag }}"
-        if [ "$TAG" = "" ]; then TAG="@Web"; fi
+        if [ "$TAG" = "" ]; then TAG="@API"; fi
         # --workers 2 taaki dono users ke tests ek saath chalein
         npx playwright test --grep $TAG --workers 2
 
