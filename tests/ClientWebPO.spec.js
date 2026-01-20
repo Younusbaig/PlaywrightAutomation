@@ -3,13 +3,22 @@ const {Login}  = require('../PageObjects/Login');
 const { CtPOData } = require('../PageObjects/CtPOData');
 const { TrelloPO } = require('../PageObjects/TrelloPO');
 const { AmazonPO } = require('../PageObjects/AmazonPO');
-const trellodata = JSON.parse(JSON.stringify(require('../utils/TrelloUtils.json')));
+// const trellodata = JSON.parse(JSON.stringify(require('../utils/TrelloUtils.json')));
 const dataset = JSON.parse(JSON.stringify(require('../utils/DataSet.json')));
 const amazondata = JSON.parse(JSON.stringify(require('../utils/AmazonLogin.json')));
 const { ZaraPO } = require('../PageObjects/ZaraPO');
 
 
+let trellodata;
 
+if (process.env.TRELLO_USERS_JSON) {
+    // Agar GitHub Actions par chal raha hai toh Secret use karega
+    trellodata = JSON.parse(process.env.TRELLO_USERS_JSON);
+} else {
+    // Agar aap apne computer (Local) par chala rahe hain toh is file se uthayega
+    // Yaad rakhein: Ye file .gitignore mein honi chahiye taaki GitHub par na jaye
+    trellodata = require('../utils/trello_utils.json');
+}
 
 
 
